@@ -10,6 +10,10 @@ const app = express();
 app.use(cors());
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Home Page");
+});
+
 app.use("/api", uploadRoutes);
 
 // ❌ remove app.listen (Vercel doesn’t allow persistent servers)
