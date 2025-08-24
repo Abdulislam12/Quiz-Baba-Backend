@@ -2,14 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const uploadRoutes = require("./routes/uploadRoutes");
+const serverless = require("serverless-http");
 
 const app = express();
 
 // Middlewares
 app.use(cors());
 
+// Routes
 app.use("/api", uploadRoutes);
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// ❌ remove app.listen (Vercel doesn’t allow persistent servers)
+// ✅ export as a serverless handler
+module.exports = app;
+module.exports.handler = serverless(app);
