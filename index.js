@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.send("Hello world v1.1");
 });
 
 app.use("/api", uploadRoutes);
